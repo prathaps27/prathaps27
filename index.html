@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>prathaps27 — GitHub Profile</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=DM+Mono:wght@400;500&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0d0d0d; --surface: #141414; --border: rgba(255,255,255,0.09);
+    --border-mid: rgba(255,255,255,0.15); --text: #e8e4dc; --muted: #7a7670; --dim: #3a3835;
+    --green-bg: #0d2318; --green-text: #5dcaa5; --green-border: #1d4a32;
+    --blue-text: #85b7eb; --blue-bg: #0c1a29; --blue-border: #1e3a5c; --amber-text: #ef9f27; --amber-bg: #1e1408; --amber-border: #4a2e08;
+  }
+  body { background: var(--bg); color: var(--text); font-family: 'Lora', Georgia, serif; min-height: 100vh; display: flex; flex-direction: column; }
+  nav { display: flex; align-items: center; justify-content: space-between; padding: 16px 40px; border-bottom: 0.5px solid var(--border); position: sticky; top: 0; background: var(--bg); z-index: 10; }
+  .wordmark { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 500; letter-spacing: 0.04em; display: flex; align-items: center; gap: 10px; color: var(--text); text-decoration: none; }
+  .wordmark svg { width: 20px; height: 20px; fill: var(--text); }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--text); }
+  .hero { display: grid; grid-template-columns: 1fr 0.5px 1fr; border-bottom: 0.5px solid var(--border); min-height: 300px; }
+  .hero-left, .hero-right { padding: 52px 48px; display: flex; flex-direction: column; justify-content: center; }
+  .hero-divider { background: var(--border); }
+  .eyebrow { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 18px; }
+  .hero-name { font-family: 'Playfair Display', serif; font-size: 34px; font-weight: 500; line-height: 1.15; letter-spacing: -0.01em; margin-bottom: 16px; }
+  .hero-bio { font-size: 15px; line-height: 1.8; color: var(--muted); font-style: italic; max-width: 360px; }
+  .badge { display: inline-flex; align-items: center; gap: 6px; font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; padding: 4px 12px; margin-top: 24px; width: fit-content; }
+  .badge-amber { border: 0.5px solid var(--amber-border); color: var(--amber-text); background: var(--amber-bg); }
+  .badge-amber::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--amber-text); }
+  .badge-blue { border: 0.5px solid var(--blue-border); color: var(--blue-text); background: var(--blue-bg); }
+  .badge-blue::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--blue-text); }
+  .right-label { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 20px; }
+  .account-cards { display: flex; flex-direction: column; gap: 12px; }
+  .account-card { border: 0.5px solid var(--border); padding: 16px 20px; display: flex; align-items: center; justify-content: space-between; transition: border-color 0.2s; }
+  .account-card:hover { border-color: var(--border-mid); }
+  .account-card.active { border-color: var(--blue-border); }
+  .card-name { font-family: 'DM Mono', monospace; font-size: 13px; font-weight: 500; margin-bottom: 4px; }
+  .card-role { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+  .card-pill { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; padding: 3px 10px; }
+  .pill-amber { border: 0.5px solid var(--amber-border); color: var(--amber-text); background: var(--amber-bg); }
+  .pill-blue { border: 0.5px solid var(--blue-border); color: var(--blue-text); background: var(--blue-bg); }
+  .pill-green { border: 0.5px solid var(--green-border); color: var(--green-text); background: var(--green-bg); }
+  .section { border-bottom: 0.5px solid var(--border); }
+  .section-header { display: flex; align-items: baseline; justify-content: space-between; padding: 24px 48px 0; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 500; }
+  .section-meta { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+  .terminal { margin: 20px 48px 32px; border: 0.5px solid var(--border); overflow: hidden; }
+  .term-bar { display: flex; align-items: center; justify-content: space-between; padding: 10px 16px; border-bottom: 0.5px solid var(--border); background: var(--surface); }
+  .term-title { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+  .term-dots { display: flex; gap: 6px; }
+  .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--dim); }
+  .term-body { padding: 20px 24px; background: #0a0a0a; font-family: 'DM Mono', monospace; font-size: 13px; line-height: 2.1; }
+  .term-row { display: grid; grid-template-columns: 20px 120px 1fr auto; align-items: center; gap: 12px; }
+  .lnum { color: var(--dim); font-size: 11px; text-align: right; }
+  .lkey { color: var(--amber-text); font-weight: 500; }
+  .lval { color: var(--muted); }
+  .lresult { color: var(--blue-text); white-space: nowrap; }
+  .cursor { display: inline-block; width: 7px; height: 13px; background: var(--blue-text); margin-left: 2px; animation: blink 1s step-end infinite; vertical-align: -2px; }
+  @keyframes blink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
+  .stats-strip { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 0.5px solid var(--border); }
+  .stat-cell { padding: 20px 24px; border-right: 0.5px solid var(--border); }
+  .stat-cell:last-child { border-right: none; }
+  .stat-num { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 500; color: var(--text); }
+  .stat-label { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-top: 4px; }
+  .repo-grid { padding: 20px 48px 36px; display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; }
+  .repo-card { border: 0.5px solid var(--border); padding: 16px 18px; transition: border-color 0.2s; }
+  .repo-card:hover { border-color: var(--border-mid); }
+  .repo-name { font-family: 'DM Mono', monospace; font-size: 13px; font-weight: 500; color: var(--text); text-decoration: none; }
+  .repo-name:hover { text-decoration: underline; }
+  .repo-desc { font-size: 12px; font-style: italic; color: var(--muted); margin: 8px 0 12px; line-height: 1.6; min-height: 32px; }
+  .repo-meta { display: flex; align-items: center; justify-content: space-between; }
+  .repo-tag { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 9px; border: 0.5px solid var(--blue-border); color: var(--blue-text); background: var(--blue-bg); }
+  .repo-lang { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--dim); }
+  .load-note { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--dim); padding: 0 48px 24px; }
+  .table-wrap { padding: 20px 48px 36px; overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  thead tr { border-bottom: 0.5px solid var(--border-mid); }
+  th { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); padding: 0 20px 12px 0; font-weight: 400; text-align: left; }
+  td { padding: 18px 20px 18px 0; border-bottom: 0.5px solid var(--border); vertical-align: middle; }
+  tr:last-child td { border-bottom: none; }
+  .acct-name { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 500; margin-bottom: 3px; }
+  .acct-role { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+  .cmd-cell { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--muted); }
+  .result-cell { display: flex; align-items: center; gap: 10px; }
+  .verified { display: inline-flex; align-items: center; gap: 4px; font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 9px; background: var(--green-bg); color: var(--green-text); border: 0.5px solid var(--green-border); }
+  .result-name { font-family: 'DM Mono', monospace; font-size: 13px; font-weight: 500; }
+  .url-cell { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--blue-text); text-decoration: none; }
+  .url-cell:hover { text-decoration: underline; }
+  .copy-btn { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); background: transparent; border: 0.5px solid var(--border); padding: 6px 12px; cursor: pointer; transition: color 0.2s, border-color 0.2s; }
+  .copy-btn:hover { color: var(--text); border-color: var(--border-mid); }
+  .copy-btn.copied { color: var(--green-text); border-color: var(--green-border); }
+  .pulse { animation: pulse 1.3s ease-in-out infinite; }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
+  .streak-wrap { padding: 20px 48px 36px; }
+  .streak-wrap img { max-width: 100%; display: block; }
+  .lang-bar { display: flex; width: 100%; height: 8px; overflow: hidden; border: 0.5px solid var(--border); margin: 16px 48px 0; }
+  .lang-seg { height: 100%; }
+  .lang-legend { display: flex; flex-wrap: wrap; gap: 16px; padding: 12px 48px 32px; }
+  .lang-item { display: flex; align-items: center; gap: 6px; font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.05em; color: var(--muted); }
+  .lang-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  footer { margin-top: auto; padding: 20px 48px; border-top: 0.5px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
+  .footer-note { font-size: 12px; font-style: italic; color: var(--muted); }
+  .footer-ts { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--dim); }
+  @media (max-width: 700px) {
+    nav { padding: 14px 20px; } .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; } .hero-divider { display: none; }
+    .hero-left, .hero-right { padding: 32px 24px; } .hero-name { font-size: 26px; }
+    .section-header { padding: 20px 24px 0; } .terminal { margin: 16px 24px 24px; }
+    .table-wrap { padding: 16px 24px 28px; }
+    footer { padding: 16px 24px; flex-direction: column; gap: 8px; align-items: flex-start; }
+    .term-row { grid-template-columns: 16px 100px 1fr; } .lresult { display: none; }
+    .stats-strip { grid-template-columns: repeat(2, 1fr); }
+    .repo-grid { padding: 16px 24px 28px; grid-template-columns: 1fr; }
+    .load-note { padding: 0 24px 20px; }
+    .streak-wrap { padding: 16px 24px 28px; }
+    .lang-bar { margin: 12px 24px 0; }
+    .lang-legend { padding: 12px 24px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="wordmark" href="#">
+    <svg viewBox="0 0 98 96" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M48.854 0C21.839 0 0 22 0 49.217c0 21.756 13.993 40.172 33.405 46.69 2.427.49 3.316-1.059 3.316-2.362 0-1.141-.08-5.052-.08-9.127-13.59 2.934-16.42-5.867-16.42-5.867-2.184-5.704-5.42-7.17-5.42-7.17-4.448-3.015.324-3.015.324-3.015 4.934.326 7.523 5.052 7.523 5.052 4.367 7.496 11.404 5.378 14.235 4.074.404-3.178 1.699-5.378 3.074-6.6-10.839-1.141-22.243-5.378-22.243-24.283 0-5.378 1.94-9.778 5.014-13.2-.485-1.222-2.184-6.275.486-13.038 0 0 4.125-1.304 13.426 5.052a46.97 46.97 0 0 1 12.214-1.63c4.125 0 8.33.571 12.213 1.63 9.302-6.356 13.427-5.052 13.427-5.052 2.67 6.763.97 11.816.485 13.038 3.155 3.422 5.015 7.822 5.015 13.2 0 18.905-11.404 23.06-22.324 24.283 1.78 1.548 3.316 4.481 3.316 9.126 0 6.6-.08 11.897-.08 13.526 0 1.304.89 2.853 3.316 2.364 19.412-6.52 33.405-24.935 33.405-46.691C97.707 22 75.788 0 48.854 0z"/></svg>
+    GitHub
+  </a>
+  <ul class="nav-links">
+    <li><a href="https://github.com/Prathap2349">Primary</a></li>
+    <li><a href="https://github.com/prathaps27">Secondary</a></li>
+    <li><a href="https://github.com">Explore</a></li>
+  </ul>
+  <button class="copy-btn" id="copyBtn">Copy Link</button>
+</nav>
+
+<div class="hero">
+  <div class="hero-left">
+    <div class="eyebrow">College &amp; Contest Account</div>
+    <div class="hero-name">prathaps27</div>
+    <div class="hero-bio">Used for code submitted during college participation — hackathons, coding contests, and coursework. Personal projects live at Prathap2349.</div>
+    <div class="badge badge-blue">College Work</div>
+  </div>
+  <div class="hero-divider"></div>
+  <div class="hero-right">
+    <div class="right-label">Identity Map</div>
+    <div class="account-cards">
+      <div class="account-card">
+        <div>
+          <div class="card-name">Prathap2349</div>
+          <div class="card-role">Primary · Daily development</div>
+        </div>
+        <span class="card-pill pill-green">Daily</span>
+      </div>
+      <div class="account-card active">
+        <div>
+          <div class="card-name">prathaps27</div>
+          <div class="card-role">Secondary · College &amp; contests</div>
+        </div>
+        <span class="card-pill pill-blue">College</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="stats-strip" id="statsStrip">
+  <div class="stat-cell"><div class="stat-num pulse" id="statRepos">—</div><div class="stat-label">Public Repos</div></div>
+  <div class="stat-cell"><div class="stat-num pulse" id="statFollowers">—</div><div class="stat-label">Followers</div></div>
+  <div class="stat-cell"><div class="stat-num pulse" id="statFollowing">—</div><div class="stat-label">Following</div></div>
+  <div class="stat-cell"><div class="stat-num pulse" id="statJoined">—</div><div class="stat-label">Joined</div></div>
+</div>
+
+<div class="section">
+  <div class="section-header">
+    <div class="section-title">SSH Verification Log</div>
+    <div class="section-meta">Passed · May 2026</div>
+  </div>
+  <div class="terminal">
+    <div class="term-bar">
+      <div class="term-title">~/.ssh/config · dual identity</div>
+      <div class="term-dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+    </div>
+    <div class="term-body">
+      <div class="term-row">
+        <span class="lnum">1</span>
+        <span class="lkey">PRIMARY:</span>
+        <span class="lval">ssh -T git@github-primary</span>
+        <span class="lresult">&#8594; Hi Prathap2349!</span>
+      </div>
+      <div class="term-row">
+        <span class="lnum">2</span>
+        <span class="lkey">SECONDARY:</span>
+        <span class="lval">ssh -T git@github-secondary</span>
+        <span class="lresult">&#8594; Hi prathaps27!</span>
+      </div>
+      <div class="term-row">
+        <span class="lnum">3</span>
+        <span class="lkey">Profiles:</span>
+        <span class="lval">Both live with account links</span>
+        <span class="lresult"></span>
+      </div>
+      <div class="term-row">
+        <span class="lnum">4</span>
+        <span class="lkey">SSH Config:</span>
+        <span class="lval">Perfectly separated<span class="cursor"></span></span>
+        <span class="lresult"></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-header">
+    <div class="section-title">Account Status</div>
+    <div class="section-meta">2 active identities</div>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Account</th>
+          <th>SSH Remote</th>
+          <th>Authenticated As</th>
+          <th>Profile</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <div class="acct-name">Prathap2349</div>
+            <div class="acct-role">Primary · Daily</div>
+          </td>
+          <td class="cmd-cell">git@github-primary:</td>
+          <td>
+            <div class="result-cell">
+              <span class="verified">&#10003; auth</span>
+              <span class="result-name">Prathap2349</span>
+            </div>
+          </td>
+          <td><a class="url-cell" href="https://github.com/Prathap2349" target="_blank">github.com/Prathap2349</a></td>
+        </tr>
+        <tr>
+          <td>
+            <div class="acct-name">prathaps27</div>
+            <div class="acct-role">Secondary · College &amp; contests</div>
+          </td>
+          <td class="cmd-cell">git@github-secondary:</td>
+          <td>
+            <div class="result-cell">
+              <span class="verified">&#10003; auth</span>
+              <span class="result-name">prathaps27</span>
+            </div>
+          </td>
+          <td><a class="url-cell" href="https://github.com/prathaps27" target="_blank">github.com/prathaps27</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-header">
+    <div class="section-title">Recent Contest &amp; College Repos</div>
+    <div class="section-meta" id="repoMeta">Loading…</div>
+  </div>
+  <div class="repo-grid" id="repoGrid"></div>
+  <div class="load-note" id="loadNote"></div>
+</div>
+
+<div class="section">
+  <div class="section-header">
+    <div class="section-title">Contribution Streak</div>
+    <div class="section-meta">Live · GitHub Stats</div>
+  </div>
+  <div class="streak-wrap">
+    <img src="https://streak-stats.demolab.com/?user=prathaps27&theme=github-dark-blue&hide_border=true&background=00000000&stroke=3a3835&ring=85b7eb&fire=ef9f27&currStreakLabel=e8e4dc" alt="prathaps27 contribution streak" loading="lazy">
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-header">
+    <div class="section-title">Language Breakdown</div>
+    <div class="section-meta" id="langMeta">From recent repos</div>
+  </div>
+  <div class="lang-bar" id="langBar"></div>
+  <div class="lang-legend" id="langLegend"></div>
+</div>
+
+<footer>
+  <div class="footer-note">Main account: <a href="https://github.com/Prathap2349" style="color:var(--blue-text);text-decoration:none;">Prathap2349</a> &nbsp;·&nbsp; SSH config perfectly separated.</div>
+  <div class="footer-ts">May 2026</div>
+</footer>
+
+<script>
+  // ---- single source of truth for both usernames ----
+  const PRIMARY_USER = 'Prathap2349';
+  const SECONDARY_USER = 'prathaps27';
+
+  // Optional: tag specific repo names with the event/course they came from.
+  // Anything not listed here just shows the default "Contest" tag.
+  const EVENT_TAGS = {
+    // 'repo-name': 'Smart India Hackathon 2026',
+  };
+
+  function timeAgo(dateStr) {
+    const diff = Date.now() - new Date(dateStr).getTime();
+    const days = Math.floor(diff / 86400000);
+    if (days < 1) return 'today';
+    if (days < 30) return days + 'd ago';
+    if (days < 365) return Math.floor(days / 30) + 'mo ago';
+    return Math.floor(days / 365) + 'y ago';
+  }
+
+  async function loadStats() {
+    try {
+      const res = await fetch(`https://api.github.com/users/${SECONDARY_USER}`);
+      if (!res.ok) throw new Error('user fetch failed');
+      const data = await res.json();
+      document.getElementById('statRepos').textContent = data.public_repos ?? '—';
+      document.getElementById('statFollowers').textContent = data.followers ?? '—';
+      document.getElementById('statFollowing').textContent = data.following ?? '—';
+      document.getElementById('statJoined').textContent = data.created_at
+        ? new Date(data.created_at).getFullYear()
+        : '—';
+    } catch (err) {
+      document.getElementById('loadNote').textContent =
+        'Live stats unavailable right now (offline or rate-limited) — refresh to retry.';
+    } finally {
+      document.querySelectorAll('.stat-num').forEach(el => el.classList.remove('pulse'));
+    }
+  }
+
+  const LANG_COLORS = {
+    JavaScript: '#ef9f27', Python: '#5dcaa5', TypeScript: '#85b7eb', HTML: '#e8804a',
+    CSS: '#b787e0', Java: '#e0a4a4', Kotlin: '#c9a86a', Dart: '#5dcae0', 'C++': '#e05d5d',
+    C: '#7a95e0', Shell: '#8fe05d'
+  };
+
+  function renderLanguageBar(repos) {
+    const bar = document.getElementById('langBar');
+    const legend = document.getElementById('langLegend');
+    const counts = {};
+    repos.forEach(r => { if (r.language) counts[r.language] = (counts[r.language] || 0) + 1; });
+    const total = Object.values(counts).reduce((a, b) => a + b, 0);
+    if (!total) {
+      document.getElementById('langMeta').textContent = 'No language data yet';
+      return;
+    }
+    const sorted = Object.entries(counts).sort((a, b) => b[1] - a[1]);
+    bar.innerHTML = sorted.map(([lang, count]) => {
+      const pct = (count / total * 100).toFixed(1);
+      const color = LANG_COLORS[lang] || 'var(--dim)';
+      return `<div class="lang-seg" style="width:${pct}%;background:${color}"></div>`;
+    }).join('');
+    legend.innerHTML = sorted.map(([lang, count]) => {
+      const pct = (count / total * 100).toFixed(0);
+      const color = LANG_COLORS[lang] || 'var(--dim)';
+      return `<div class="lang-item"><span class="lang-dot" style="background:${color}"></span>${lang} · ${pct}%</div>`;
+    }).join('');
+  }
+
+  async function loadRepos() {
+    const grid = document.getElementById('repoGrid');
+    const meta = document.getElementById('repoMeta');
+    try {
+      const res = await fetch(`https://api.github.com/users/${SECONDARY_USER}/repos?sort=pushed&per_page=6`);
+      if (!res.ok) throw new Error('repo fetch failed');
+      const repos = await res.json();
+      if (!repos.length) {
+        meta.textContent = 'No public repos yet';
+        grid.innerHTML = '<div class="load-note">Nothing pushed to this account yet.</div>';
+        return;
+      }
+      meta.textContent = repos.length + ' most recently updated';
+      grid.innerHTML = repos.map(r => `
+        <div class="repo-card">
+          <a class="repo-name" href="${r.html_url}" target="_blank">${r.name}</a>
+          <div class="repo-desc">${r.description ? r.description : 'No description yet'}</div>
+          <div class="repo-meta">
+            <span class="repo-tag">${EVENT_TAGS[r.name] || 'Contest'}</span>
+            <span class="repo-lang">${r.language || ''} ${r.language ? '·' : ''} ${timeAgo(r.pushed_at)}</span>
+          </div>
+        </div>
+      `).join('');
+      renderLanguageBar(repos);
+    } catch (err) {
+      meta.textContent = '';
+      grid.innerHTML = '';
+      document.getElementById('loadNote').textContent =
+        'Live repo list unavailable right now (offline or rate-limited) — refresh to retry.';
+    }
+  }
+
+  document.getElementById('copyBtn').addEventListener('click', async () => {
+    const btn = document.getElementById('copyBtn');
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      btn.textContent = 'Copied!';
+      btn.classList.add('copied');
+    } catch {
+      btn.textContent = 'Copy failed';
+    }
+    setTimeout(() => { btn.textContent = 'Copy Link'; btn.classList.remove('copied'); }, 1800);
+  });
+
+  loadStats();
+  loadRepos();
+</script>
+
+</body>
+</html>
